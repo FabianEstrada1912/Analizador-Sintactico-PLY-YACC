@@ -18,83 +18,79 @@ Rule 4     comp -> if LLDERECHA
 Rule 5     comp -> for LLDERECHA
 Rule 6     comp -> print LLDERECHA
 Rule 7     comp -> asg LLDERECHA
-Rule 8     if -> IF PARIZQUIERDO eif PARDERECHO PYC compif
-Rule 9     eif -> ID o NUMBER
-Rule 10    compif -> if
-Rule 11    compif -> for
-Rule 12    compif -> print
-Rule 13    compif -> asg
-Rule 14    compif -> empty
-Rule 15    o -> MENOR
-Rule 16    o -> MAYOR
-Rule 17    o -> MAYORIGUAL
-Rule 18    o -> MENORIGUAL
-Rule 19    o -> IGUALIGUAL
-Rule 20    for -> FOR PARIZQUIERDO efor PARDERECHO PYC compif
-Rule 21    efor -> ID op NUMBER
-Rule 22    op -> MENOR
-Rule 23    print -> PRINT PARIZQUIERDO comprint PARDERECHO PYC compif
+Rule 8     if -> IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA
+Rule 9     eif -> expresion MENOR expresion
+Rule 10    eif -> expresion MAYOR expresion
+Rule 11    eif -> expresion MAYORIGUAL expresion
+Rule 12    eif -> expresion MENORIGUAL expresion
+Rule 13    eif -> expresion IGUALIGUAL expresion
+Rule 14    for -> FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA
+Rule 15    efor -> IT op expresion
+Rule 16    op -> MENOR
+Rule 17    compif -> if
+Rule 18    compif -> for
+Rule 19    compif -> print
+Rule 20    compif -> asg
+Rule 21    compif -> empty
+Rule 22    print -> PRINT PARIZQUIERDO comprint PARDERECHO compif
+Rule 23    comprint -> ID
 Rule 24    comprint -> STRING con
-Rule 25    comprint -> ID
-Rule 26    con -> SUMA ID
-Rule 27    con -> empty
-Rule 28    asg -> VAR ID compasg PYC compif
-Rule 29    compasg -> IGUAL valor
-Rule 30    compasg -> empty
-Rule 31    valor -> ID
-Rule 32    valor -> NUMBER
-Rule 33    empty -> <empty>
+Rule 25    con -> SUMA expresion
+Rule 26    con -> empty
+Rule 27    asg -> VAR ID IGUAL expresion PYC compif
+Rule 28    expresion -> NUMBER
+Rule 29    expresion -> ID
+Rule 30    empty -> <empty>
 
 Terminals, with rules where they appear
 
 COMMA                : 
 DIV                  : 
 EJECUTABLE           : 2
-FOR                  : 20
+FOR                  : 14
 FUNCTION             : 1
-ID                   : 9 21 25 26 28 31
+ID                   : 23 27 29
 IF                   : 8
-IGUAL                : 29
-IGUALIGUAL           : 19
-LLDERECHA            : 4 5 6 7
-LLIZQUIERDA          : 3
-MAYOR                : 16
-MAYORIGUAL           : 17
-MENOR                : 15 22
-MENORIGUAL           : 18
+IGUAL                : 27
+IGUALIGUAL           : 13
+IT                   : 15
+LLDERECHA            : 4 5 6 7 8 14
+LLIZQUIERDA          : 3 8 14
+MAYOR                : 10
+MAYORIGUAL           : 11
+MENOR                : 9 16
+MENORIGUAL           : 12
 MULTI                : 
-NUMBER               : 9 21 32
-PARDERECHO           : 2 8 20 23
-PARIZQUIERDO         : 2 8 20 23
-PRINT                : 23
-PYC                  : 8 20 23 28
+NUMBER               : 28
+PARDERECHO           : 2 8 14 22
+PARIZQUIERDO         : 2 8 14 22
+PRINT                : 22
+PYC                  : 27
 RESTA                : 
 RETURN               : 
 STRING               : 24
-SUMA                 : 26
-VAR                  : 28
+SUMA                 : 25
+VAR                  : 27
 error                : 
 
 Nonterminals, with rules where they appear
 
-asg                  : 7 13
+asg                  : 7 20
 bc                   : 2
 comp                 : 3
-compasg              : 28
-compif               : 8 20 23 28
-comprint             : 23
+compif               : 8 14 22 27
+comprint             : 22
 con                  : 24
-efor                 : 20
+efor                 : 14
 eif                  : 8
-empty                : 14 27 30
+empty                : 21 26
+expresion            : 9 9 10 10 11 11 12 12 13 13 15 25 27
 f                    : 0
 fm                   : 1
-for                  : 5 11
-if                   : 4 10
-o                    : 9
-op                   : 21
-print                : 6 12
-valor                : 29
+for                  : 5 18
+if                   : 4 17
+op                   : 15
+print                : 6 19
 
 Parsing method: LALR
 
@@ -166,10 +162,10 @@ state 8
     (5) comp -> . for LLDERECHA
     (6) comp -> . print LLDERECHA
     (7) comp -> . asg LLDERECHA
-    (8) if -> . IF PARIZQUIERDO eif PARDERECHO PYC compif
-    (20) for -> . FOR PARIZQUIERDO efor PARDERECHO PYC compif
-    (23) print -> . PRINT PARIZQUIERDO comprint PARDERECHO PYC compif
-    (28) asg -> . VAR ID compasg PYC compif
+    (8) if -> . IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (14) for -> . FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (22) print -> . PRINT PARIZQUIERDO comprint PARDERECHO compif
+    (27) asg -> . VAR ID IGUAL expresion PYC compif
 
     IF              shift and go to state 14
     FOR             shift and go to state 15
@@ -219,28 +215,28 @@ state 13
 
 state 14
 
-    (8) if -> IF . PARIZQUIERDO eif PARDERECHO PYC compif
+    (8) if -> IF . PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA
 
     PARIZQUIERDO    shift and go to state 22
 
 
 state 15
 
-    (20) for -> FOR . PARIZQUIERDO efor PARDERECHO PYC compif
+    (14) for -> FOR . PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA
 
     PARIZQUIERDO    shift and go to state 23
 
 
 state 16
 
-    (23) print -> PRINT . PARIZQUIERDO comprint PARDERECHO PYC compif
+    (22) print -> PRINT . PARIZQUIERDO comprint PARDERECHO compif
 
     PARIZQUIERDO    shift and go to state 24
 
 
 state 17
 
-    (28) asg -> VAR . ID compasg PYC compif
+    (27) asg -> VAR . ID IGUAL expresion PYC compif
 
     ID              shift and go to state 25
 
@@ -275,445 +271,500 @@ state 21
 
 state 22
 
-    (8) if -> IF PARIZQUIERDO . eif PARDERECHO PYC compif
-    (9) eif -> . ID o NUMBER
+    (8) if -> IF PARIZQUIERDO . eif PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (9) eif -> . expresion MENOR expresion
+    (10) eif -> . expresion MAYOR expresion
+    (11) eif -> . expresion MAYORIGUAL expresion
+    (12) eif -> . expresion MENORIGUAL expresion
+    (13) eif -> . expresion IGUALIGUAL expresion
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
 
-    ID              shift and go to state 27
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
 
     eif                            shift and go to state 26
+    expresion                      shift and go to state 27
 
 state 23
 
-    (20) for -> FOR PARIZQUIERDO . efor PARDERECHO PYC compif
-    (21) efor -> . ID op NUMBER
+    (14) for -> FOR PARIZQUIERDO . efor PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (15) efor -> . IT op expresion
 
-    ID              shift and go to state 29
+    IT              shift and go to state 31
 
-    efor                           shift and go to state 28
+    efor                           shift and go to state 30
 
 state 24
 
-    (23) print -> PRINT PARIZQUIERDO . comprint PARDERECHO PYC compif
+    (22) print -> PRINT PARIZQUIERDO . comprint PARDERECHO compif
+    (23) comprint -> . ID
     (24) comprint -> . STRING con
-    (25) comprint -> . ID
 
-    STRING          shift and go to state 31
-    ID              shift and go to state 32
+    ID              shift and go to state 33
+    STRING          shift and go to state 34
 
-    comprint                       shift and go to state 30
+    comprint                       shift and go to state 32
 
 state 25
 
-    (28) asg -> VAR ID . compasg PYC compif
-    (29) compasg -> . IGUAL valor
-    (30) compasg -> . empty
-    (33) empty -> .
+    (27) asg -> VAR ID . IGUAL expresion PYC compif
 
-    IGUAL           shift and go to state 34
-    PYC             reduce using rule 33 (empty -> .)
+    IGUAL           shift and go to state 35
 
-    compasg                        shift and go to state 33
-    empty                          shift and go to state 35
 
 state 26
 
-    (8) if -> IF PARIZQUIERDO eif . PARDERECHO PYC compif
+    (8) if -> IF PARIZQUIERDO eif . PARDERECHO LLIZQUIERDA compif LLDERECHA
 
     PARDERECHO      shift and go to state 36
 
 
 state 27
 
-    (9) eif -> ID . o NUMBER
-    (15) o -> . MENOR
-    (16) o -> . MAYOR
-    (17) o -> . MAYORIGUAL
-    (18) o -> . MENORIGUAL
-    (19) o -> . IGUALIGUAL
+    (9) eif -> expresion . MENOR expresion
+    (10) eif -> expresion . MAYOR expresion
+    (11) eif -> expresion . MAYORIGUAL expresion
+    (12) eif -> expresion . MENORIGUAL expresion
+    (13) eif -> expresion . IGUALIGUAL expresion
 
-    MENOR           shift and go to state 38
-    MAYOR           shift and go to state 39
-    MAYORIGUAL      shift and go to state 40
-    MENORIGUAL      shift and go to state 41
-    IGUALIGUAL      shift and go to state 42
+    MENOR           shift and go to state 37
+    MAYOR           shift and go to state 38
+    MAYORIGUAL      shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    IGUALIGUAL      shift and go to state 41
 
-    o                              shift and go to state 37
 
 state 28
 
-    (20) for -> FOR PARIZQUIERDO efor . PARDERECHO PYC compif
+    (28) expresion -> NUMBER .
 
-    PARDERECHO      shift and go to state 43
+    MENOR           reduce using rule 28 (expresion -> NUMBER .)
+    MAYOR           reduce using rule 28 (expresion -> NUMBER .)
+    MAYORIGUAL      reduce using rule 28 (expresion -> NUMBER .)
+    MENORIGUAL      reduce using rule 28 (expresion -> NUMBER .)
+    IGUALIGUAL      reduce using rule 28 (expresion -> NUMBER .)
+    PYC             reduce using rule 28 (expresion -> NUMBER .)
+    PARDERECHO      reduce using rule 28 (expresion -> NUMBER .)
 
 
 state 29
 
-    (21) efor -> ID . op NUMBER
-    (22) op -> . MENOR
+    (29) expresion -> ID .
 
-    MENOR           shift and go to state 45
+    MENOR           reduce using rule 29 (expresion -> ID .)
+    MAYOR           reduce using rule 29 (expresion -> ID .)
+    MAYORIGUAL      reduce using rule 29 (expresion -> ID .)
+    MENORIGUAL      reduce using rule 29 (expresion -> ID .)
+    IGUALIGUAL      reduce using rule 29 (expresion -> ID .)
+    PYC             reduce using rule 29 (expresion -> ID .)
+    PARDERECHO      reduce using rule 29 (expresion -> ID .)
 
-    op                             shift and go to state 44
 
 state 30
 
-    (23) print -> PRINT PARIZQUIERDO comprint . PARDERECHO PYC compif
+    (14) for -> FOR PARIZQUIERDO efor . PARDERECHO LLIZQUIERDA compif LLDERECHA
 
-    PARDERECHO      shift and go to state 46
+    PARDERECHO      shift and go to state 42
 
 
 state 31
 
-    (24) comprint -> STRING . con
-    (26) con -> . SUMA ID
-    (27) con -> . empty
-    (33) empty -> .
+    (15) efor -> IT . op expresion
+    (16) op -> . MENOR
 
-    SUMA            shift and go to state 48
-    PARDERECHO      reduce using rule 33 (empty -> .)
+    MENOR           shift and go to state 44
 
-    con                            shift and go to state 47
-    empty                          shift and go to state 49
+    op                             shift and go to state 43
 
 state 32
 
-    (25) comprint -> ID .
+    (22) print -> PRINT PARIZQUIERDO comprint . PARDERECHO compif
 
-    PARDERECHO      reduce using rule 25 (comprint -> ID .)
+    PARDERECHO      shift and go to state 45
 
 
 state 33
 
-    (28) asg -> VAR ID compasg . PYC compif
+    (23) comprint -> ID .
 
-    PYC             shift and go to state 50
+    PARDERECHO      reduce using rule 23 (comprint -> ID .)
 
 
 state 34
 
-    (29) compasg -> IGUAL . valor
-    (31) valor -> . ID
-    (32) valor -> . NUMBER
+    (24) comprint -> STRING . con
+    (25) con -> . SUMA expresion
+    (26) con -> . empty
+    (30) empty -> .
 
-    ID              shift and go to state 52
-    NUMBER          shift and go to state 53
+    SUMA            shift and go to state 47
+    PARDERECHO      reduce using rule 30 (empty -> .)
 
-    valor                          shift and go to state 51
+    con                            shift and go to state 46
+    empty                          shift and go to state 48
 
 state 35
 
-    (30) compasg -> empty .
+    (27) asg -> VAR ID IGUAL . expresion PYC compif
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
 
-    PYC             reduce using rule 30 (compasg -> empty .)
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
 
+    expresion                      shift and go to state 49
 
 state 36
 
-    (8) if -> IF PARIZQUIERDO eif PARDERECHO . PYC compif
+    (8) if -> IF PARIZQUIERDO eif PARDERECHO . LLIZQUIERDA compif LLDERECHA
 
-    PYC             shift and go to state 54
+    LLIZQUIERDA     shift and go to state 50
 
 
 state 37
 
-    (9) eif -> ID o . NUMBER
+    (9) eif -> expresion MENOR . expresion
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
 
-    NUMBER          shift and go to state 55
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
 
+    expresion                      shift and go to state 51
 
 state 38
 
-    (15) o -> MENOR .
+    (10) eif -> expresion MAYOR . expresion
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
 
-    NUMBER          reduce using rule 15 (o -> MENOR .)
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
 
+    expresion                      shift and go to state 52
 
 state 39
 
-    (16) o -> MAYOR .
+    (11) eif -> expresion MAYORIGUAL . expresion
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
 
-    NUMBER          reduce using rule 16 (o -> MAYOR .)
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
 
+    expresion                      shift and go to state 53
 
 state 40
 
-    (17) o -> MAYORIGUAL .
+    (12) eif -> expresion MENORIGUAL . expresion
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
 
-    NUMBER          reduce using rule 17 (o -> MAYORIGUAL .)
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
 
+    expresion                      shift and go to state 54
 
 state 41
 
-    (18) o -> MENORIGUAL .
+    (13) eif -> expresion IGUALIGUAL . expresion
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
 
-    NUMBER          reduce using rule 18 (o -> MENORIGUAL .)
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
 
+    expresion                      shift and go to state 55
 
 state 42
 
-    (19) o -> IGUALIGUAL .
+    (14) for -> FOR PARIZQUIERDO efor PARDERECHO . LLIZQUIERDA compif LLDERECHA
 
-    NUMBER          reduce using rule 19 (o -> IGUALIGUAL .)
+    LLIZQUIERDA     shift and go to state 56
 
 
 state 43
 
-    (20) for -> FOR PARIZQUIERDO efor PARDERECHO . PYC compif
+    (15) efor -> IT op . expresion
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
 
-    PYC             shift and go to state 56
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
 
+    expresion                      shift and go to state 57
 
 state 44
 
-    (21) efor -> ID op . NUMBER
+    (16) op -> MENOR .
 
-    NUMBER          shift and go to state 57
+    NUMBER          reduce using rule 16 (op -> MENOR .)
+    ID              reduce using rule 16 (op -> MENOR .)
 
 
 state 45
 
-    (22) op -> MENOR .
+    (22) print -> PRINT PARIZQUIERDO comprint PARDERECHO . compif
+    (17) compif -> . if
+    (18) compif -> . for
+    (19) compif -> . print
+    (20) compif -> . asg
+    (21) compif -> . empty
+    (8) if -> . IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (14) for -> . FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (22) print -> . PRINT PARIZQUIERDO comprint PARDERECHO compif
+    (27) asg -> . VAR ID IGUAL expresion PYC compif
+    (30) empty -> .
 
-    NUMBER          reduce using rule 22 (op -> MENOR .)
+    IF              shift and go to state 14
+    FOR             shift and go to state 15
+    PRINT           shift and go to state 16
+    VAR             shift and go to state 17
+    LLDERECHA       reduce using rule 30 (empty -> .)
 
+    compif                         shift and go to state 58
+    if                             shift and go to state 59
+    for                            shift and go to state 60
+    print                          shift and go to state 61
+    asg                            shift and go to state 62
+    empty                          shift and go to state 63
 
 state 46
-
-    (23) print -> PRINT PARIZQUIERDO comprint PARDERECHO . PYC compif
-
-    PYC             shift and go to state 58
-
-
-state 47
 
     (24) comprint -> STRING con .
 
     PARDERECHO      reduce using rule 24 (comprint -> STRING con .)
 
 
+state 47
+
+    (25) con -> SUMA . expresion
+    (28) expresion -> . NUMBER
+    (29) expresion -> . ID
+
+    NUMBER          shift and go to state 28
+    ID              shift and go to state 29
+
+    expresion                      shift and go to state 64
+
 state 48
 
-    (26) con -> SUMA . ID
+    (26) con -> empty .
 
-    ID              shift and go to state 59
+    PARDERECHO      reduce using rule 26 (con -> empty .)
 
 
 state 49
 
-    (27) con -> empty .
+    (27) asg -> VAR ID IGUAL expresion . PYC compif
 
-    PARDERECHO      reduce using rule 27 (con -> empty .)
+    PYC             shift and go to state 65
 
 
 state 50
 
-    (28) asg -> VAR ID compasg PYC . compif
-    (10) compif -> . if
-    (11) compif -> . for
-    (12) compif -> . print
-    (13) compif -> . asg
-    (14) compif -> . empty
-    (8) if -> . IF PARIZQUIERDO eif PARDERECHO PYC compif
-    (20) for -> . FOR PARIZQUIERDO efor PARDERECHO PYC compif
-    (23) print -> . PRINT PARIZQUIERDO comprint PARDERECHO PYC compif
-    (28) asg -> . VAR ID compasg PYC compif
-    (33) empty -> .
+    (8) if -> IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA . compif LLDERECHA
+    (17) compif -> . if
+    (18) compif -> . for
+    (19) compif -> . print
+    (20) compif -> . asg
+    (21) compif -> . empty
+    (8) if -> . IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (14) for -> . FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (22) print -> . PRINT PARIZQUIERDO comprint PARDERECHO compif
+    (27) asg -> . VAR ID IGUAL expresion PYC compif
+    (30) empty -> .
 
     IF              shift and go to state 14
     FOR             shift and go to state 15
     PRINT           shift and go to state 16
     VAR             shift and go to state 17
-    LLDERECHA       reduce using rule 33 (empty -> .)
+    LLDERECHA       reduce using rule 30 (empty -> .)
 
-    compif                         shift and go to state 60
-    if                             shift and go to state 61
-    for                            shift and go to state 62
-    print                          shift and go to state 63
-    asg                            shift and go to state 64
-    empty                          shift and go to state 65
+    compif                         shift and go to state 66
+    if                             shift and go to state 59
+    for                            shift and go to state 60
+    print                          shift and go to state 61
+    asg                            shift and go to state 62
+    empty                          shift and go to state 63
 
 state 51
 
-    (29) compasg -> IGUAL valor .
+    (9) eif -> expresion MENOR expresion .
 
-    PYC             reduce using rule 29 (compasg -> IGUAL valor .)
+    PARDERECHO      reduce using rule 9 (eif -> expresion MENOR expresion .)
 
 
 state 52
 
-    (31) valor -> ID .
+    (10) eif -> expresion MAYOR expresion .
 
-    PYC             reduce using rule 31 (valor -> ID .)
+    PARDERECHO      reduce using rule 10 (eif -> expresion MAYOR expresion .)
 
 
 state 53
 
-    (32) valor -> NUMBER .
+    (11) eif -> expresion MAYORIGUAL expresion .
 
-    PYC             reduce using rule 32 (valor -> NUMBER .)
+    PARDERECHO      reduce using rule 11 (eif -> expresion MAYORIGUAL expresion .)
 
 
 state 54
 
-    (8) if -> IF PARIZQUIERDO eif PARDERECHO PYC . compif
-    (10) compif -> . if
-    (11) compif -> . for
-    (12) compif -> . print
-    (13) compif -> . asg
-    (14) compif -> . empty
-    (8) if -> . IF PARIZQUIERDO eif PARDERECHO PYC compif
-    (20) for -> . FOR PARIZQUIERDO efor PARDERECHO PYC compif
-    (23) print -> . PRINT PARIZQUIERDO comprint PARDERECHO PYC compif
-    (28) asg -> . VAR ID compasg PYC compif
-    (33) empty -> .
+    (12) eif -> expresion MENORIGUAL expresion .
 
-    IF              shift and go to state 14
-    FOR             shift and go to state 15
-    PRINT           shift and go to state 16
-    VAR             shift and go to state 17
-    LLDERECHA       reduce using rule 33 (empty -> .)
+    PARDERECHO      reduce using rule 12 (eif -> expresion MENORIGUAL expresion .)
 
-    compif                         shift and go to state 66
-    if                             shift and go to state 61
-    for                            shift and go to state 62
-    print                          shift and go to state 63
-    asg                            shift and go to state 64
-    empty                          shift and go to state 65
 
 state 55
 
-    (9) eif -> ID o NUMBER .
+    (13) eif -> expresion IGUALIGUAL expresion .
 
-    PARDERECHO      reduce using rule 9 (eif -> ID o NUMBER .)
+    PARDERECHO      reduce using rule 13 (eif -> expresion IGUALIGUAL expresion .)
 
 
 state 56
 
-    (20) for -> FOR PARIZQUIERDO efor PARDERECHO PYC . compif
-    (10) compif -> . if
-    (11) compif -> . for
-    (12) compif -> . print
-    (13) compif -> . asg
-    (14) compif -> . empty
-    (8) if -> . IF PARIZQUIERDO eif PARDERECHO PYC compif
-    (20) for -> . FOR PARIZQUIERDO efor PARDERECHO PYC compif
-    (23) print -> . PRINT PARIZQUIERDO comprint PARDERECHO PYC compif
-    (28) asg -> . VAR ID compasg PYC compif
-    (33) empty -> .
+    (14) for -> FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA . compif LLDERECHA
+    (17) compif -> . if
+    (18) compif -> . for
+    (19) compif -> . print
+    (20) compif -> . asg
+    (21) compif -> . empty
+    (8) if -> . IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (14) for -> . FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (22) print -> . PRINT PARIZQUIERDO comprint PARDERECHO compif
+    (27) asg -> . VAR ID IGUAL expresion PYC compif
+    (30) empty -> .
 
     IF              shift and go to state 14
     FOR             shift and go to state 15
     PRINT           shift and go to state 16
     VAR             shift and go to state 17
-    LLDERECHA       reduce using rule 33 (empty -> .)
+    LLDERECHA       reduce using rule 30 (empty -> .)
 
     compif                         shift and go to state 67
-    if                             shift and go to state 61
-    for                            shift and go to state 62
-    print                          shift and go to state 63
-    asg                            shift and go to state 64
-    empty                          shift and go to state 65
+    if                             shift and go to state 59
+    for                            shift and go to state 60
+    print                          shift and go to state 61
+    asg                            shift and go to state 62
+    empty                          shift and go to state 63
 
 state 57
 
-    (21) efor -> ID op NUMBER .
+    (15) efor -> IT op expresion .
 
-    PARDERECHO      reduce using rule 21 (efor -> ID op NUMBER .)
+    PARDERECHO      reduce using rule 15 (efor -> IT op expresion .)
 
 
 state 58
 
-    (23) print -> PRINT PARIZQUIERDO comprint PARDERECHO PYC . compif
-    (10) compif -> . if
-    (11) compif -> . for
-    (12) compif -> . print
-    (13) compif -> . asg
-    (14) compif -> . empty
-    (8) if -> . IF PARIZQUIERDO eif PARDERECHO PYC compif
-    (20) for -> . FOR PARIZQUIERDO efor PARDERECHO PYC compif
-    (23) print -> . PRINT PARIZQUIERDO comprint PARDERECHO PYC compif
-    (28) asg -> . VAR ID compasg PYC compif
-    (33) empty -> .
+    (22) print -> PRINT PARIZQUIERDO comprint PARDERECHO compif .
+
+    LLDERECHA       reduce using rule 22 (print -> PRINT PARIZQUIERDO comprint PARDERECHO compif .)
+
+
+state 59
+
+    (17) compif -> if .
+
+    LLDERECHA       reduce using rule 17 (compif -> if .)
+
+
+state 60
+
+    (18) compif -> for .
+
+    LLDERECHA       reduce using rule 18 (compif -> for .)
+
+
+state 61
+
+    (19) compif -> print .
+
+    LLDERECHA       reduce using rule 19 (compif -> print .)
+
+
+state 62
+
+    (20) compif -> asg .
+
+    LLDERECHA       reduce using rule 20 (compif -> asg .)
+
+
+state 63
+
+    (21) compif -> empty .
+
+    LLDERECHA       reduce using rule 21 (compif -> empty .)
+
+
+state 64
+
+    (25) con -> SUMA expresion .
+
+    PARDERECHO      reduce using rule 25 (con -> SUMA expresion .)
+
+
+state 65
+
+    (27) asg -> VAR ID IGUAL expresion PYC . compif
+    (17) compif -> . if
+    (18) compif -> . for
+    (19) compif -> . print
+    (20) compif -> . asg
+    (21) compif -> . empty
+    (8) if -> . IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (14) for -> . FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA
+    (22) print -> . PRINT PARIZQUIERDO comprint PARDERECHO compif
+    (27) asg -> . VAR ID IGUAL expresion PYC compif
+    (30) empty -> .
 
     IF              shift and go to state 14
     FOR             shift and go to state 15
     PRINT           shift and go to state 16
     VAR             shift and go to state 17
-    LLDERECHA       reduce using rule 33 (empty -> .)
+    LLDERECHA       reduce using rule 30 (empty -> .)
 
     compif                         shift and go to state 68
-    if                             shift and go to state 61
-    for                            shift and go to state 62
-    print                          shift and go to state 63
-    asg                            shift and go to state 64
-    empty                          shift and go to state 65
-
-state 59
-
-    (26) con -> SUMA ID .
-
-    PARDERECHO      reduce using rule 26 (con -> SUMA ID .)
-
-
-state 60
-
-    (28) asg -> VAR ID compasg PYC compif .
-
-    LLDERECHA       reduce using rule 28 (asg -> VAR ID compasg PYC compif .)
-
-
-state 61
-
-    (10) compif -> if .
-
-    LLDERECHA       reduce using rule 10 (compif -> if .)
-
-
-state 62
-
-    (11) compif -> for .
-
-    LLDERECHA       reduce using rule 11 (compif -> for .)
-
-
-state 63
-
-    (12) compif -> print .
-
-    LLDERECHA       reduce using rule 12 (compif -> print .)
-
-
-state 64
-
-    (13) compif -> asg .
-
-    LLDERECHA       reduce using rule 13 (compif -> asg .)
-
-
-state 65
-
-    (14) compif -> empty .
-
-    LLDERECHA       reduce using rule 14 (compif -> empty .)
-
+    if                             shift and go to state 59
+    for                            shift and go to state 60
+    print                          shift and go to state 61
+    asg                            shift and go to state 62
+    empty                          shift and go to state 63
 
 state 66
 
-    (8) if -> IF PARIZQUIERDO eif PARDERECHO PYC compif .
+    (8) if -> IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif . LLDERECHA
 
-    LLDERECHA       reduce using rule 8 (if -> IF PARIZQUIERDO eif PARDERECHO PYC compif .)
+    LLDERECHA       shift and go to state 69
 
 
 state 67
 
-    (20) for -> FOR PARIZQUIERDO efor PARDERECHO PYC compif .
+    (14) for -> FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif . LLDERECHA
 
-    LLDERECHA       reduce using rule 20 (for -> FOR PARIZQUIERDO efor PARDERECHO PYC compif .)
+    LLDERECHA       shift and go to state 70
 
 
 state 68
 
-    (23) print -> PRINT PARIZQUIERDO comprint PARDERECHO PYC compif .
+    (27) asg -> VAR ID IGUAL expresion PYC compif .
 
-    LLDERECHA       reduce using rule 23 (print -> PRINT PARIZQUIERDO comprint PARDERECHO PYC compif .)
+    LLDERECHA       reduce using rule 27 (asg -> VAR ID IGUAL expresion PYC compif .)
+
+
+state 69
+
+    (8) if -> IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA .
+
+    LLDERECHA       reduce using rule 8 (if -> IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA .)
+
+
+state 70
+
+    (14) for -> FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA .
+
+    LLDERECHA       reduce using rule 14 (for -> FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA .)
 

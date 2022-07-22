@@ -1,5 +1,17 @@
-codigo procedimiento iniciar(){hasta (cadena<3); si (cadena>3); imprimir("imprimir")}
+""" 1 procedimiento iniciar(){hasta(i<10); imprimir(pruebaaaaaaaa);}
 
+
+1 procedimiento iniciar(){variable a = 1; variable b = 5; si(a==1){imprimir(holaa)}}
+1 procedimiento iniciar(){variable a = 100; hasta(i<a){imprimir(ok)}}
+
+1 procedimiento iniciar(){variable a = 100; si(a<=100){hasta(i<10){imprimir(hola)}}}
+
+1 procedimiento iniciar(){variable a = 100; hasta(i<10){si(a<=9){imprimir(hola)}}}
+
+
+1 procedimiento iniciar(){variable a = 100; si(a<=100){imprimir(a)}}
+
+1 procedimiento iniciar(){variable a = 3; variable a = 5; si(b<a){imprimir("Hola" + a)}}
 
 S ->  F FM  
 F -> procedimiento
@@ -20,3 +32,15 @@ EFOR -> ID < INT
 PRINT -> imprimir ("ID" CON | ID | "ID" )
 CON -> + ID CON | + ID
 ASG -> variable ID = ID(L|INT|ID|VACIO) |  variable ID = ID|INT 
+
+
+ def p_o(t):
+    ''' 
+    o : MENOR
+       | MAYOR
+       | MAYORIGUAL
+       | MENORIGUAL
+       | IGUALIGUAL 
+    
+    ''' 
+    print("operadores") """

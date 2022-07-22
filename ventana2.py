@@ -31,12 +31,14 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
         lexico.input(cadena_codigo)
         tok = lexico.token()
         lista_token = ""
+        cadena2 = ""
+
         while True:
             tok = lexico.token()
             
             if not tok : break
             lista_token = lista_token + '\n' + str(tok)
-        self.salida.setText(lista_token)  
+        #self.salida.setText(lista_token)  
 
         cad = []
         cont = 0
@@ -45,9 +47,13 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 cont +=1
             else: 
                 cad.append(i)
-        
+        i = 0
+       
+        for i in range(len(cad)):
+            cadena2 += cad[i] + "\n"
+            self.salida.setText(cadena2)
 
-        self.salida.setText(lista_token + str(cad))
+        #self.salida.setText(lista_token + str(cad) + cadena2)
 
         
         

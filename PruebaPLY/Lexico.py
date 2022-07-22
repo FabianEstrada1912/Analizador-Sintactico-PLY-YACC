@@ -8,6 +8,7 @@ reservadas = {
     'hasta': 'FOR',
     'imprimir': 'PRINT',
     'iniciar': 'EJECUTABLE',
+    'i': 'IT', 
 }
 
 tokens = [
@@ -56,6 +57,8 @@ t_FUNCTION = r'procedimiento'
 t_FOR = r'hasta'
 t_PRINT = r'imprimir'
 t_EJECUTABLE = r'inciar'
+t_IT = r'i'
+
 
 
 t_ignore =  ' \t\n' 

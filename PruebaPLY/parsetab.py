@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'rightIDIFFORPRINTrightIGUALrightIGUALIGUALleftMAYORMENORleftSUMARESTAleftMULTIDIVleftPARIZQUIERDOPARDERECHOleftLLIZQUIERDALLDERECHACOMMA DIV EJECUTABLE FOR FUNCTION ID IF IGUAL IGUALIGUAL LLDERECHA LLIZQUIERDA MAYOR MAYORIGUAL MENOR MENORIGUAL MULTI NUMBER PARDERECHO PARIZQUIERDO PRINT PYC RESTA RETURN STRING SUMA VARf : FUNCTION fmfm : EJECUTABLE PARIZQUIERDO PARDERECHO bcbc : LLIZQUIERDA comp\n    comp : if LLDERECHA\n          | for LLDERECHA\n          | print LLDERECHA\n          | asg LLDERECHA\n    if : IF PARIZQUIERDO eif PARDERECHO PYC compifeif : ID o NUMBER\n    compif : if\n            | for\n            | print \n            | asg\n            | empty\n     \n    o : MENOR\n       | MAYOR\n       | MAYORIGUAL\n       | MENORIGUAL\n       | IGUALIGUAL \n    \n    for : FOR PARIZQUIERDO efor PARDERECHO PYC compifefor : ID op NUMBER op : MENOR print : PRINT PARIZQUIERDO comprint PARDERECHO PYC compif\n    comprint : STRING con\n              | ID\n    con : SUMA ID\n            | empty\n    asg : VAR ID compasg PYC compif\n    compasg : IGUAL valor \n             | empty \n    \n    valor : ID\n           | NUMBER   \n    empty :'
+_lr_signature = 'rightIGUALrightIGUALIGUALleftMAYORMENORleftSUMARESTAleftMULTIDIVrightPARIZQUIERDOPARDERECHOleftLLIZQUIERDALLDERECHACOMMA DIV EJECUTABLE FOR FUNCTION ID IF IGUAL IGUALIGUAL IT LLDERECHA LLIZQUIERDA MAYOR MAYORIGUAL MENOR MENORIGUAL MULTI NUMBER PARDERECHO PARIZQUIERDO PRINT PYC RESTA RETURN STRING SUMA VARf : FUNCTION fmfm : EJECUTABLE PARIZQUIERDO PARDERECHO bcbc : LLIZQUIERDA comp\n    comp : if LLDERECHA\n          | for LLDERECHA\n          | print LLDERECHA\n          | asg LLDERECHA\n    if : IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA eif : expresion MENOR expresion\n            | expresion MAYOR expresion\n            | expresion MAYORIGUAL expresion\n            | expresion MENORIGUAL expresion\n            | expresion IGUALIGUAL expresion for : FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHAefor : IT op expresion op : MENOR \n    compif : if\n            | for\n            | print \n            | asg\n            | empty\n    print : PRINT PARIZQUIERDO comprint PARDERECHO compif\n    comprint : ID\n             | STRING con \n    con : SUMA expresion\n            | empty\n    asg : VAR ID IGUAL expresion PYC compifexpresion : NUMBERexpresion : IDempty :'
     
-_lr_action_items = {'FUNCTION':([0,],[2,]),'$end':([1,3,7,9,18,19,20,21,],[0,-1,-2,-3,-4,-5,-6,-7,]),'EJECUTABLE':([2,],[4,]),'PARIZQUIERDO':([4,14,15,16,],[5,22,23,24,]),'PARDERECHO':([5,26,28,30,31,32,47,49,55,57,59,],[6,36,43,46,-33,-25,-24,-27,-9,-21,-26,]),'LLIZQUIERDA':([6,],[8,]),'IF':([8,50,54,56,58,],[14,14,14,14,14,]),'FOR':([8,50,54,56,58,],[15,15,15,15,15,]),'PRINT':([8,50,54,56,58,],[16,16,16,16,16,]),'VAR':([8,50,54,56,58,],[17,17,17,17,17,]),'LLDERECHA':([10,11,12,13,50,54,56,58,60,61,62,63,64,65,66,67,68,],[18,19,20,21,-33,-33,-33,-33,-28,-10,-11,-12,-13,-14,-8,-20,-23,]),'ID':([17,22,23,24,34,48,],[25,27,29,32,52,59,]),'STRING':([24,],[31,]),'IGUAL':([25,],[34,]),'PYC':([25,33,35,36,43,46,51,52,53,],[-33,50,-30,54,56,58,-29,-31,-32,]),'MENOR':([27,29,],[38,45,]),'MAYOR':([27,],[39,]),'MAYORIGUAL':([27,],[40,]),'MENORIGUAL':([27,],[41,]),'IGUALIGUAL':([27,],[42,]),'SUMA':([31,],[48,]),'NUMBER':([34,37,38,39,40,41,42,44,45,],[53,55,-15,-16,-17,-18,-19,57,-22,]),}
+_lr_action_items = {'FUNCTION':([0,],[2,]),'$end':([1,3,7,9,18,19,20,21,],[0,-1,-2,-3,-4,-5,-6,-7,]),'EJECUTABLE':([2,],[4,]),'PARIZQUIERDO':([4,14,15,16,],[5,22,23,24,]),'PARDERECHO':([5,26,28,29,30,32,33,34,46,48,51,52,53,54,55,57,64,],[6,36,-28,-29,42,45,-23,-30,-24,-26,-9,-10,-11,-12,-13,-15,-25,]),'LLIZQUIERDA':([6,36,42,],[8,50,56,]),'IF':([8,45,50,56,65,],[14,14,14,14,14,]),'FOR':([8,45,50,56,65,],[15,15,15,15,15,]),'PRINT':([8,45,50,56,65,],[16,16,16,16,16,]),'VAR':([8,45,50,56,65,],[17,17,17,17,17,]),'LLDERECHA':([10,11,12,13,45,50,56,58,59,60,61,62,63,65,66,67,68,69,70,],[18,19,20,21,-30,-30,-30,-22,-17,-18,-19,-20,-21,-30,69,70,-27,-8,-14,]),'ID':([17,22,24,35,37,38,39,40,41,43,44,47,],[25,29,33,29,29,29,29,29,29,29,-16,29,]),'NUMBER':([22,35,37,38,39,40,41,43,44,47,],[28,28,28,28,28,28,28,28,-16,28,]),'IT':([23,],[31,]),'STRING':([24,],[34,]),'IGUAL':([25,],[35,]),'MENOR':([27,28,29,31,],[37,-28,-29,44,]),'MAYOR':([27,28,29,],[38,-28,-29,]),'MAYORIGUAL':([27,28,29,],[39,-28,-29,]),'MENORIGUAL':([27,28,29,],[40,-28,-29,]),'IGUALIGUAL':([27,28,29,],[41,-28,-29,]),'PYC':([28,29,49,],[-28,-29,65,]),'SUMA':([34,],[47,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'f':([0,],[1,]),'fm':([2,],[3,]),'bc':([6,],[7,]),'comp':([8,],[9,]),'if':([8,50,54,56,58,],[10,61,61,61,61,]),'for':([8,50,54,56,58,],[11,62,62,62,62,]),'print':([8,50,54,56,58,],[12,63,63,63,63,]),'asg':([8,50,54,56,58,],[13,64,64,64,64,]),'eif':([22,],[26,]),'efor':([23,],[28,]),'comprint':([24,],[30,]),'compasg':([25,],[33,]),'empty':([25,31,50,54,56,58,],[35,49,65,65,65,65,]),'o':([27,],[37,]),'op':([29,],[44,]),'con':([31,],[47,]),'valor':([34,],[51,]),'compif':([50,54,56,58,],[60,66,67,68,]),}
+_lr_goto_items = {'f':([0,],[1,]),'fm':([2,],[3,]),'bc':([6,],[7,]),'comp':([8,],[9,]),'if':([8,45,50,56,65,],[10,59,59,59,59,]),'for':([8,45,50,56,65,],[11,60,60,60,60,]),'print':([8,45,50,56,65,],[12,61,61,61,61,]),'asg':([8,45,50,56,65,],[13,62,62,62,62,]),'eif':([22,],[26,]),'expresion':([22,35,37,38,39,40,41,43,47,],[27,49,51,52,53,54,55,57,64,]),'efor':([23,],[30,]),'comprint':([24,],[32,]),'op':([31,],[43,]),'con':([34,],[46,]),'empty':([34,45,50,56,65,],[48,63,63,63,63,]),'compif':([45,50,56,65,],[58,66,67,68,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,37 +27,34 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> f","S'",1,None,None,None),
-  ('f -> FUNCTION fm','f',2,'p_f','Sintaxis.py',26),
-  ('fm -> EJECUTABLE PARIZQUIERDO PARDERECHO bc','fm',4,'p_fm','Sintaxis.py',31),
-  ('bc -> LLIZQUIERDA comp','bc',2,'p_bc','Sintaxis.py',35),
+  ('f -> FUNCTION fm','f',2,'p_f','Sintaxis.py',22),
+  ('fm -> EJECUTABLE PARIZQUIERDO PARDERECHO bc','fm',4,'p_fm','Sintaxis.py',28),
+  ('bc -> LLIZQUIERDA comp','bc',2,'p_bc','Sintaxis.py',33),
   ('comp -> if LLDERECHA','comp',2,'p_comp','Sintaxis.py',39),
   ('comp -> for LLDERECHA','comp',2,'p_comp','Sintaxis.py',40),
   ('comp -> print LLDERECHA','comp',2,'p_comp','Sintaxis.py',41),
   ('comp -> asg LLDERECHA','comp',2,'p_comp','Sintaxis.py',42),
-  ('if -> IF PARIZQUIERDO eif PARDERECHO PYC compif','if',6,'p_if','Sintaxis.py',47),
-  ('eif -> ID o NUMBER','eif',3,'p_eif','Sintaxis.py',51),
-  ('compif -> if','compif',1,'p_compif','Sintaxis.py',56),
-  ('compif -> for','compif',1,'p_compif','Sintaxis.py',57),
-  ('compif -> print','compif',1,'p_compif','Sintaxis.py',58),
-  ('compif -> asg','compif',1,'p_compif','Sintaxis.py',59),
-  ('compif -> empty','compif',1,'p_compif','Sintaxis.py',60),
-  ('o -> MENOR','o',1,'p_o','Sintaxis.py',66),
-  ('o -> MAYOR','o',1,'p_o','Sintaxis.py',67),
-  ('o -> MAYORIGUAL','o',1,'p_o','Sintaxis.py',68),
-  ('o -> MENORIGUAL','o',1,'p_o','Sintaxis.py',69),
-  ('o -> IGUALIGUAL','o',1,'p_o','Sintaxis.py',70),
-  ('for -> FOR PARIZQUIERDO efor PARDERECHO PYC compif','for',6,'p_for','Sintaxis.py',76),
-  ('efor -> ID op NUMBER','efor',3,'p_efor','Sintaxis.py',80),
-  ('op -> MENOR','op',1,'p_op','Sintaxis.py',84),
-  ('print -> PRINT PARIZQUIERDO comprint PARDERECHO PYC compif','print',6,'p_print','Sintaxis.py',88),
-  ('comprint -> STRING con','comprint',2,'p_comprint','Sintaxis.py',93),
-  ('comprint -> ID','comprint',1,'p_comprint','Sintaxis.py',94),
-  ('con -> SUMA ID','con',2,'p_con','Sintaxis.py',99),
-  ('con -> empty','con',1,'p_con','Sintaxis.py',100),
-  ('asg -> VAR ID compasg PYC compif','asg',5,'p_asg','Sintaxis.py',105),
-  ('compasg -> IGUAL valor','compasg',2,'p_compasg','Sintaxis.py',110),
-  ('compasg -> empty','compasg',1,'p_compasg','Sintaxis.py',111),
-  ('valor -> ID','valor',1,'p_valor','Sintaxis.py',117),
-  ('valor -> NUMBER','valor',1,'p_valor','Sintaxis.py',118),
-  ('empty -> <empty>','empty',0,'p_empty','Sintaxis.py',123),
+  ('if -> IF PARIZQUIERDO eif PARDERECHO LLIZQUIERDA compif LLDERECHA','if',7,'p_if','Sintaxis.py',48),
+  ('eif -> expresion MENOR expresion','eif',3,'p_eif','Sintaxis.py',58),
+  ('eif -> expresion MAYOR expresion','eif',3,'p_eif','Sintaxis.py',59),
+  ('eif -> expresion MAYORIGUAL expresion','eif',3,'p_eif','Sintaxis.py',60),
+  ('eif -> expresion MENORIGUAL expresion','eif',3,'p_eif','Sintaxis.py',61),
+  ('eif -> expresion IGUALIGUAL expresion','eif',3,'p_eif','Sintaxis.py',62),
+  ('for -> FOR PARIZQUIERDO efor PARDERECHO LLIZQUIERDA compif LLDERECHA','for',7,'p_for','Sintaxis.py',73),
+  ('efor -> IT op expresion','efor',3,'p_efor','Sintaxis.py',83),
+  ('op -> MENOR','op',1,'p_op','Sintaxis.py',89),
+  ('compif -> if','compif',1,'p_compif','Sintaxis.py',96),
+  ('compif -> for','compif',1,'p_compif','Sintaxis.py',97),
+  ('compif -> print','compif',1,'p_compif','Sintaxis.py',98),
+  ('compif -> asg','compif',1,'p_compif','Sintaxis.py',99),
+  ('compif -> empty','compif',1,'p_compif','Sintaxis.py',100),
+  ('print -> PRINT PARIZQUIERDO comprint PARDERECHO compif','print',5,'p_print','Sintaxis.py',106),
+  ('comprint -> ID','comprint',1,'p_comprint','Sintaxis.py',112),
+  ('comprint -> STRING con','comprint',2,'p_comprint','Sintaxis.py',113),
+  ('con -> SUMA expresion','con',2,'p_con','Sintaxis.py',125),
+  ('con -> empty','con',1,'p_con','Sintaxis.py',126),
+  ('asg -> VAR ID IGUAL expresion PYC compif','asg',6,'p_asg','Sintaxis.py',134),
+  ('expresion -> NUMBER','expresion',1,'p_expresion_numero','Sintaxis.py',156),
+  ('expresion -> ID','expresion',1,'p_expresion_nombre','Sintaxis.py',160),
+  ('empty -> <empty>','empty',0,'p_empty','Sintaxis.py',169),
 ]
